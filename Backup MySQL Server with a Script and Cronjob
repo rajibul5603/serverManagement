@@ -1,0 +1,35 @@
+Backup MySQL Server with a Script and Cronjob
+Shell Script to Backup MySQL Databases on Webserver Daily This Script Performs a full backup of the MySQL Databases on a Server. Be sure to edit the configuration options at the beginning of the script to match your environment prior to executing. The end result will be a TAR archive of each website with the name '(current-datestamp)-$db.sql'.
+
+Usage:
+Pull up a terminal or SSH into the target server.
+
+Logon as root
+
+sudo -i
+Download the installer script.
+wget https://raw.githubusercontent.com/clusterednetworks/backup-mysql/master/backup-mysql.sh
+Edit the configuration options at the beginning of the script to match your environment prior to executing.
+
+----------------------------------------
+OPTIONS
+----------------------------------------
+USER='mysql-username'       # MySQL User
+PASSWORD='mysql-password' # MySQL Password
+DAYS_TO_KEEP=5    # 0 to keep forever
+GZIP=0            # 1 = Compress
+BACKUP_PATH='/home/backup/mysql'
+----------------------------------------
+Make the script executable
+
+chmod +x backup-mysql.sh
+Run the script.
+./backup-mysql.sh
+Setup a cronjob to run the script daily/weekly if you choose.
+5 1   * * * /etc/backup-mysql.sh >/dev/null 2>&1
+Clustered Networks
+Located in Edmonton, AB Canada, Clustered Networks was Incorporated in 2001 and has offered Network / Internet and IT Consulting services for over 20 years. We offer personalized service! Call Us Today! - Click Here for our Contact Info
+
+Posted in Linux Network Admin Tips, Network Security Tips, Tech How To on Dec 10, 2020
+
+
