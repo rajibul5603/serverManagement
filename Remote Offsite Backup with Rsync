@@ -1,0 +1,37 @@
+Shell Script to Backup Websites and Databases from your VPS (Digital Ocean, Linode, AWS, Vultr). Be sure to edit the configuration options at the beginning of the script to match your environment prior to executing.
+
+
+Usage:
+Pull up a terminal or SSH into the target server.
+
+Logon as root
+
+sudo -i
+Download the script(s).
+wget https://raw.githubusercontent.com/clusterednetworks/rsync-offsite-backup/master/rsync.server.ssh.key.sh
+wget https://raw.githubusercontent.com/clusterednetworks/rsync-offsite-backup/master/rsync.server.ssh.password.sh
+Edit the configuration options at the beginning of the script to match your environment prior to executing.
+#----------------------------------------
+# OPTIONS
+#----------------------------------------
+# connection info
+REMOTE_HOST=yourserver.yourdomain.com
+REMOTE_USER=your-login-user
+REMOTE_PORT=22
+path to private key
+KEY=/home/??/
+
+path to backup to files to
+LOCAL_PATH=/home/backup/backuptest
+
+path to pull the files from
+REMOTE_PATH=/home/backup/backuptest
+
+Make the script executable
+chmod +x rsync.server.ssh.key.sh
+Run the script.
+./rsync.server.ssh.key.sh
+Setup a cronjob to run the script daily/weekly if you choose.
+5 1   * * * /etc/rsync.server.ssh.key.sh >/dev/null 2>&1
+Clustered Networks
+Located in Edmonton, AB Canada, Clustered Networks was Incorporated in 2001 and has offered Network / Internet and IT Consulting services for over 20 years. We offer personalized service! Call Us Today! - Click Here for our Contact Info
